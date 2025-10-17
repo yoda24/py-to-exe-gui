@@ -171,18 +171,18 @@ class Ui_py2exe(object):
                 if hasattr(msg, "readline"):
                     for line in msg:
                         line = line.rstrip()
-                        logf.write(line + "\n")
+                        if self.ck_save_to_log_file.isChecked(): logf.write(line + "\n")
                         if show: self.log_signal.message.emit(line) 
                 # --- list/tuple
                 elif isinstance(msg, (list, tuple)):
                     for item in msg:
                         line = str(item)
-                        logf.write(line + "\n")
+                        if self.ck_save_to_log_file.isChecked(): logf.write(line + "\n")
                         if show: self.log_signal.message.emit(line) 
                 # --- string
                 else:
                     line = str(msg)
-                    logf.write(line + "\n")
+                    if self.ck_save_to_log_file.isChecked(): logf.write(line + "\n")
                     if show: self.log_signal.message.emit(line) 
 
     # --- Start The Conversion ---
